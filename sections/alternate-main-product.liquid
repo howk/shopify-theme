@@ -1,0 +1,187 @@
+{% schema %}
+  {
+    "name": "Susparsa product page",
+    "settings": [
+	],
+	"limit": 1,
+	"templates": [
+		"product"
+	],
+	"blocks": [
+      {
+        "name": "Accordeon",
+        "type": "accordeon",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          }
+        ]
+      }
+	],
+	"presets": [
+      {
+      	"name": "Product page",
+		"settings": {
+		},
+        "blocks": [
+          {
+          	"type": "accordeon"
+          }
+        ]
+      }
+	]
+  }
+{% endschema %}
+
+<section class="product-card" aria-label="Product card" id="skipLinkTarget" tabindex="-1">
+  <div class="product-card__right">
+    <h1 class="product-card__title" id="productName">
+      {{ product.title }}
+    </h1>
+    <p class="product-card__price">
+      <span class="v-h">Price </span>
+      {{ product.price | money_with_currency }}
+    </p>
+    <p class="product-card__infolabel">Tax included</p>
+    <form aria-label="Order" class="product-card__form" action="">
+      <fieldset class="product-card__parameter">
+        <legend class="product-card__label">Size</legend>
+        <ul class="input-group">
+          <li class="input-group__item">
+            <label class="input-radio">
+              <input class="input-radio__input" type="radio" name="product_size" value="xs" checked>
+              <span class="input-radio__visual input-radio-size">XS</span>
+            </label>
+          </li>
+          <li class="input-group__item">
+            <label class="input-radio">
+              <input class="input-radio__input" type="radio" name="product_size" value="s">
+              <span class="input-radio__visual input-radio-size">S</span>
+            </label>
+          </li>
+          <li class="input-group__item">
+            <label class="input-radio">
+              <input class="input-radio__input" type="radio" name="product_size" value="m">
+              <span class="input-radio__visual input-radio-size">M</span>
+            </label>
+          </li>
+          <li class="input-group__item">
+            <label class="input-radio">
+              <input class="input-radio__input" type="radio" name="product_size" value="l">
+              <span class="input-radio__visual input-radio-size">L</span>
+            </label>
+          </li>
+          <li class="input-group__item">
+            <label class="input-radio">
+              <input class="input-radio__input" type="radio" name="product_size" value="xl">
+              <span class="input-radio__visual input-radio-size">XL</span>
+            </label>	
+          </li>
+          <li class="input-group__item">
+            <label class="input-radio">
+              <input class="input-radio__input" type="radio" name="product_size" value="2xl" disabled>
+              <span class="input-radio__visual input-radio-size">2XL</span>
+            </label>	
+          </li>
+        </ul>					
+      </fieldset>
+      <fieldset class="product-card__parameter">
+        <legend class="product-card__label">Color<span aria-hidden="true"> - <span id="productColorValue">White</span></span></legend>
+        <ul class="input-group">
+          <li class="input-group__item">
+            <label class="input-radio">
+              <input class="input-radio__input" type="radio" name="product_color" data-name-display="White" value="white" checked>
+              <span class="input-radio__visual input-radio-color" title="White">
+                <span class="input-radio-color__sample" style="background-color: #ffffff; border: 1px #cccccc solid;"></span>
+              </span>
+            </label>											
+          </li>
+          <li class="input-group__item">
+            <label class="input-radio">
+              <input class="input-radio__input" type="radio" name="product_color" data-name-display="Black" value="black">
+              <span class="input-radio__visual input-radio-color" title="Black">
+                <span class="input-radio-color__sample" style="background-color: #1a1f29;"></span>
+              </span>
+            </label>
+          </li>
+          <li class="input-group__item">
+            <label class="input-radio">
+              <input class="input-radio__input" type="radio" name="product_color" data-name-display="Gray" value="gray">
+              <span class="input-radio__visual input-radio-color" title="Gray">
+                <span class="input-radio-color__sample" style="background-color: #aeaeb0;"></span>
+              </span>
+            </label>
+          </li>
+          <li class="input-group__item">
+            <label class="input-radio">
+              <input class="input-radio__input" type="radio" name="product_color" data-name-display="Purple latte" value="purple">
+              <span class="input-radio__visual input-radio-color" title="Purple latte">
+                <span class="input-radio-color__sample" style="background-color: #ba9be5;"></span>
+              </span>
+            </label>
+          </li>
+          <li class="input-group__item">
+            <label class="input-radio">
+              <input class="input-radio__input" type="radio" name="product_color" data-name-display="Color 1" value="color1" disabled>
+              <span class="input-radio__visual input-radio-color" title="Color 1">
+                <span class="input-radio-color__sample" style="background-color: #e9a0a7;"></span>
+              </span>
+            </label>
+          </li>
+          <li class="input-group__item">
+            <label class="input-radio">
+              <input class="input-radio__input" type="radio" name="product_color" data-name-display="Color 2" value="color2" disabled>
+              <span class="input-radio__visual input-radio-color" title="Color 2">
+                <span class="input-radio-color__sample" style="background-color: #f8cab1;"></span>
+              </span>
+            </label>												
+          </li>										
+        </ul>										
+      </fieldset>
+      <div class="product-card__parameter product-card__parameter_last">
+        <label class="product-card__label" for="productQuantity">Quantity</label>
+        <div class="input-quantity">
+          <button type="button" class="input-quantity__btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+          <input type="number" class="input-quantity__field" id="productQuantity" name="product_quantity" value="1">
+          <button type="button" class="input-quantity__btn" data-action="increase" aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+      <button type="submit" class="btn btn_secondary btn_hollow" aria-label="Add to cart `{{ product.title }}`">Add to cart</button>
+      <button type="submit" class="btn btn_primary" aria-label="Buy now `{{ product.title }}`">Buy it now</button>
+    </form>
+    {% if product.content %}
+    <div class="product-card__description">
+      {{ product.content }}
+    </div>
+    {% endif %}
+  </div>						
+  <div class="product-card__left">
+    <a class="product-card__photo-big" href="{{ product | image_url }}">
+      <img class="product-card__photo-big-picture" src="{{ product | image_url: width: 473 }}" srcset="{{ product | image_url: width: 946 }} 2x" alt="Big photo of white unisex t-shirt">
+    </a>
+    <section class="accordion" aria-label="Product info">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'accordeon' %}
+        <div class="accordion__item">
+          <h2 id="productInfo1">
+            <button type="button" aria-controls="productInfo1Body" class="accordion__item-title" aria-expanded="false">
+              {{ block.settings.title }}
+            </button>
+          </h2>
+          <div class="accordion__item-body" id="productInfo1Body" aria-labelledby="productInfo1">
+            {{ block.settings.text }}
+          </div>
+        </div>
+      {% endcase %}
+    {% endfor %}
+    </section>
+  </div>
+</section>

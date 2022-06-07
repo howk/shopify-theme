@@ -1,0 +1,50 @@
+{
+  "layout": "theme.alternate",
+  "sections": {
+    "main": {
+      "type": "alternate-main-product",
+      "blocks": {
+        "cbf81be4-86df-44cc-8e05-beb2884760da": {
+          "type": "accordeon",
+          "settings": {
+            "title": "Sizing & Fit",
+            "text": "<p>Olga is 175cm, she is wearing a size S.<\/p>"
+          }
+        },
+        "811ae7ed-178f-48ab-b176-e7af1f5595d8": {
+          "type": "accordeon",
+          "settings": {
+            "title": "Composition & Care",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<\/p>"
+          }
+        },
+        "8f1ad19e-a221-4362-b319-109c3f1d540a": {
+          "type": "accordeon",
+          "settings": {
+            "title": "Delivery & Returns",
+            "text": "<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "cbf81be4-86df-44cc-8e05-beb2884760da",
+        "811ae7ed-178f-48ab-b176-e7af1f5595d8",
+        "8f1ad19e-a221-4362-b319-109c3f1d540a"
+      ],
+      "settings": {
+      }
+    },
+    "recommendations": {
+      "type": "alternate-product-recommendation",
+      "settings": {
+        "title": "You may also like",
+        "recommended": "new-items",
+        "products_limit": 4
+      }
+    }
+  },
+  "order": [
+    "main",
+    "recommendations"
+  ]
+}

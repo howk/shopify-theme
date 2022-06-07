@@ -1,0 +1,72 @@
+{% schema %}
+  {
+    "name": "Susparsa recommendations",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "collection",
+        "id": "recommended",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "products_limit",
+		"min": 3,
+		"max": 6,
+		"default": 4,
+        "label": "Products output limit"
+      }
+	]
+  }
+{% endschema %}
+
+<section class="products-similar" aria-labelledby="labelProductsSimiilar">
+  <h2 class="heading-2 products-similar__heading-2" id="labelProductsSimiilar">
+  	{{ section.settings.title }}
+  </h2>
+  <div class="products-grid">
+    {% for item in section.settings.recommended.products %}
+      {% if forloop.index <= section.settings.products_limit %}
+      <article class="products-grid__item">
+        <a href="{{ item.url }}" tabindex="-1" class="products-grid__item-photo" aria-hidden="true">
+          <img src="{{ item | image_url: width: 248 }}" class="products-grid__item-picture" srcset="{{ item | image_url: width: 496 }} 2x" alt="{{ item.title }}">
+        </a>
+        <h3 class="products-grid__item-name">
+          <a href="{{ item.url }}">{{ item.title }}</a>
+        </h3>
+        <ul class="colors-palette products-grid__item-colors-palette" aria-label="Product colors">
+          <li class="colors-palette__item" title="Color name 1">
+            <span class="colors-palette__sample" style="background-color: #C88252;">
+              <span class="v-h">Color name 1</span>
+            </span>
+          </li>
+          <li class="colors-palette__item" title="Color name 2">
+            <span class="colors-palette__sample" style="background-color: #F8CAB1;">
+              <span class="v-h">Color name 2</span>
+            </span>
+          </li>
+          <li class="colors-palette__item" title="Color name 3">
+            <span class="colors-palette__sample" style="background-color: #E9A0A7;">
+              <span class="v-h">Color name 3</span>
+            </span>
+          </li>
+          <li class="colors-palette__item" title="Color name 4">
+            <span class="colors-palette__sample" style="background-color: #BA9BE5;">
+              <span class="v-h">Color name 4</span>
+            </span>
+          </li>									
+        </ul>
+        <p class="products-grid__item-price">
+          <span class="v-h">Price </span>
+          {{ item.price | money_with_currency }}
+        </p>
+      </article>
+      {% endif %}
+    {% endfor %}
+  
+  </div>						
+</section>

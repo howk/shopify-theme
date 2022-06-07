@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+    
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+    
+    {% render 'meta-tags' %}
+    
+    {{ content_for_header }}
+    
+	<link rel="icon" href="https://howk.github.io/spurit-exercise/icon.svg" type="image/svg+xml">
+	<link href="https://howk.github.io/spurit-exercise/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <a class="skiplink" href="#skipLinkTarget">Go to main content</a>
+    <div class="main-grid">
+      
+      {% section 'alternate-header' %}
+      
+      <main class="page-content">
+        <div class="container">
+          <nav aria-label="Breadcrumbs">
+            <ol class="breadcrumbs">
+              <li class="breadcrumbs__item">
+                <a class="breadcrumbs__link" href="#">Home</a>
+              </li>
+              <li class="breadcrumbs__item">
+                <a class="breadcrumbs__link" href="#">Women</a>
+              </li>
+              <li class="breadcrumbs__item breadcrumbs__item_active">
+                <span class="breadcrumbs__current" aria-current="page">White unisex t-shirt</span>
+              </li>														
+            </ol>
+          </nav>
+          
+          {{ content_for_layout }}
+          
+        </div>
+      </main>
+      
+      {% section 'alternate-footer' %}
+    </div>
+    <script src="https://howk.github.io/spurit-exercise/scripts.js"></script>
+  </body>
+</html>
