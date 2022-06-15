@@ -1,23 +1,23 @@
 @font-face {
   font-family: "Avenir Next Rounded Std";
-  src: url("fonts/AvenirNextRoundedStd-Reg.eot");
+  src: url("AvenirNextRoundedStd-Reg.eot");
   src: local("Avenir Next Rounded Std Regular"),
     local("AvenirNextRoundedStd-Reg"),
-    url("fonts/AvenirNextRoundedStd-Reg.eot?#iefix") format("embedded-opentype"),
-    url("fonts/AvenirNextRoundedStd-Reg.woff") format("woff"),
-    url("fonts/AvenirNextRoundedStd-Reg.ttf") format("truetype");
+    url("AvenirNextRoundedStd-Reg.eot?#iefix") format("embedded-opentype"),
+    url("AvenirNextRoundedStd-Reg.woff") format("woff"),
+    url("AvenirNextRoundedStd-Reg.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Avenir Next Rounded Std";
-  src: url("fonts/AvenirNextRoundedStd-Demi.eot");
+  src: url("AvenirNextRoundedStd-Demi.eot");
   src: local("Avenir Next Rounded Std Demi"), local("AvenirNextRoundedStd-Demi"),
-    url("fonts/AvenirNextRoundedStd-Demi.eot?#iefix")
+    url("AvenirNextRoundedStd-Demi.eot?#iefix")
       format("embedded-opentype"),
-    url("fonts/AvenirNextRoundedStd-Demi.woff") format("woff"),
-    url("fonts/AvenirNextRoundedStd-Demi.ttf") format("truetype");
+    url("AvenirNextRoundedStd-Demi.woff") format("woff"),
+    url("AvenirNextRoundedStd-Demi.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
@@ -216,6 +216,7 @@ fieldset legend {
 .header__logo {
   display: block;
   margin-top: -5px;
+  max-width: 139px;
 }
 
 .header__logo:focus-visible {
@@ -227,6 +228,7 @@ fieldset legend {
 
 .header__logo-picture {
   display: block;
+  width: 100%;
 }
 
 .menu {
@@ -330,7 +332,7 @@ fieldset legend {
 .breadcrumbs__current {
   display: inline-block;
   font-size: 12px;
-  color: #929499;
+  color: #74767B;
 }
 
 .footer {
