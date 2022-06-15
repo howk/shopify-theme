@@ -32,6 +32,11 @@
     {% for item in section.settings.recommended.products %}
       {% if forloop.index <= section.settings.products_limit %}
       <article class="products-grid__item">
+        {% if item.available != true %}
+        <ul class="product-tags products-grid__item-product-tags">
+          <li class="product-tags__item">Sold out</li>
+        </ul>
+        {% endif %}
         <a href="{{ item.url }}" tabindex="-1" class="products-grid__item-photo" aria-hidden="true">
           <img src="{{ item | image_url: width: 248 }}" class="products-grid__item-picture" srcset="{{ item | image_url: width: 496 }} 2x" alt="{{ item.title }}">
         </a>
