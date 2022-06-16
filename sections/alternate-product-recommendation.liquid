@@ -41,7 +41,10 @@
           <img src="{{ item | image_url: width: 248 }}" class="products-grid__item-picture" srcset="{{ item | image_url: width: 496 }} 2x" alt="{{ item.title }}">
         </a>
         <h3 class="products-grid__item-name">
-          <a href="{{ item.url }}">{{ item.title }}</a>
+          <a href="{{ item.url }}">
+            {% if item.vendor != '' %}{{ item.vendor }} {% endif %}
+            {{ item.title }}
+          </a>
         </h3>
         <ul class="colors-palette products-grid__item-colors-palette" aria-label="Product colors">
           <li class="colors-palette__item" title="Color name 1">
