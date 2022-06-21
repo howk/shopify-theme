@@ -41,11 +41,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
 Shopify.theme.sections.register('alternate-main-product', {
   onBlockSelect: function(e) {
-    // show target
-    console.log(e);
+    const $targetAccordion = document.getElementById('#' + e.detail.blockId);
+    $targetAccordion.classList.add('accordion__item_active');
   },
   onBlockDeselect: function(e) {
-    // hide all
-    console.log(e);
+    const $targetAccordion = document.getElementById('#' + e.detail.blockId);
+    $targetAccordion.classList.remove('accordion__item_active');
   }  
 });
