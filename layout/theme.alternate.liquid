@@ -20,12 +20,13 @@
     
     {{ content_for_header }}
 
-    
-    
     <link rel="icon" href="https://howk.github.io/spurit-exercise/icon.svg" type="image/svg+xml">
-    
-
+  
     <link href="{{ 'custom-styles.css' | asset_url }}" rel="stylesheet">
+
+    <script src="{{ 'theme-sections.min.js' | asset_url }}" defer></script>
+    <script src="{{ 'alternate-main-product.js' | asset_url }}" defer></script>
+
   </head>
   <body>
     <a class="skiplink" href="#skipLinkTarget">Go to main content</a>
@@ -56,7 +57,5 @@
       
       {% section 'alternate-footer' %}
     </div>
-
-    <script src="{{ 'custom-scripts.js' | asset_url }}"></script>
   </body>
 </html>

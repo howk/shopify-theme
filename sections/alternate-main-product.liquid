@@ -40,7 +40,14 @@
   }
 {% endschema %}
 
-<section class="product-card" aria-label="Product card" id="skipLinkTarget" tabindex="-1">
+<section 
+  data-section-id="{{ section.id }}"
+  data-section-type="alternate-main-product"
+  class="product-card"
+  aria-label="Product card"
+  id="skipLinkTarget"
+  tabindex="-1">
+
   <div class="product-card__right">
     <h1 class="product-card__title" id="productName">
       {{ product.title }}
@@ -170,7 +177,7 @@
     {% for block in section.blocks %}
       {% case block.type %}
         {% when 'accordeon' %}
-        <div class="accordion__item">
+        <div class="accordion__item" {{ block.shopify_attributes }}>
           <h2 id="productInfo1">
             <button type="button" aria-controls="productInfo1Body" class="accordion__item-title" aria-expanded="false">
               {{ block.settings.title }}
