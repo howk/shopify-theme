@@ -56,8 +56,9 @@
       <span class="v-h">Price </span>
       {{ product.price | money_with_currency }}
     </p>
-    <p class="product-card__infolabel">Tax included</p>
-    <form aria-label="Order" class="product-card__form" action="">
+    <p class="product-card__infolabel">Tax included.</p>
+
+    <form style="display: none;">
       <fieldset class="product-card__parameter">
         <legend class="product-card__label">Size</legend>
         <ul class="input-group">
@@ -152,18 +153,24 @@
           </li>										
         </ul>										
       </fieldset>
+    </form>
+
+    {% form 'product', product, class: 'product-card__form', aria-label: 'Order' %}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"> 
       <div class="product-card__parameter product-card__parameter_last">
         <label class="product-card__label" for="productQuantity">Quantity</label>
         <div class="input-quantity">
           <button type="button" class="input-quantity__btn" data-action="decrease" aria-label="Decrease quantity">−</button>
-          <input type="number" class="input-quantity__field" id="productQuantity" name="product_quantity" value="1">
+          <input type="number" class="input-quantity__field" id="productQuantity" name="quantity" value="1">
           <button type="button" class="input-quantity__btn" data-action="increase" aria-label="Increase quantity">+</button>
         </div>
       </div>
-      <button type="submit" class="btn btn_secondary btn_hollow" aria-label="Add to cart `{{ product.title }}`">Add to cart</button>
-      <button type="submit" class="btn btn_primary" aria-label="Buy now `{{ product.title }}`">Buy it now</button>
-    </form>
-    {% if product.content %}
+      <button id="btnProductAddToCart" type="submit" class="btn btn_secondary btn_hollow" aria-label="Add to cart `{{ product.title }}`">Add to cart</button>
+      <p class="product-card__error"></p>
+      <button id="btnProductBuyNow" type="submit" class="btn btn_primary" aria-label="Buy now `{{ product.title }}`">Buy it now</button>
+    {% endform %}
+
+    {% if product.content != blank %}
     <div class="product-card__description">
       {{ product.content }}
     </div>

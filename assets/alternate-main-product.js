@@ -36,7 +36,35 @@ window.addEventListener("DOMContentLoaded", () => {
         $title.setAttribute('aria-expanded', 'false');   
       }
     });    
-  });  
+  });
+
+  // CART
+  const $productForm = document.querySelector('.product-card__form');
+  if ($productForm) {
+    //const $errorElem = $productForm.querySelector('.product-card__error');
+    $productForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      formData.append('sections', 'alternate-header');
+      fetch(Shopify.routes.root + 'cart/add.js', {
+        method: 'POST',
+        body: formData
+      })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        const event = new CustomEvent('cart:added', {
+          detail: {
+            sections: response.sections
+          }
+        });
+        document.dispatchEvent(event);
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+    });
+  }
 });
 
 Shopify.theme.sections.register('alternate-main-product', {

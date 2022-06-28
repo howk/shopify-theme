@@ -596,6 +596,13 @@ fieldset legend {
   margin-bottom: 50px;
 }
 
+.product-card__error {
+  color: #8f1717;
+  font-size: 14px;
+  margin: 0 0 12px 0;
+  text-align: center;
+}
+
 @media (max-width: 1200px) {
   .product-card__left {
     width: 50%;

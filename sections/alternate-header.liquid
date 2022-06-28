@@ -53,7 +53,9 @@
           <a class="menu__link" href="{{ routes.search_url }}">Search</a>
         </li>
         <li class="menu__item">
-          <a class="menu__link" href="{{ routes.cart_url }}">Cart (<span class="v-h">with </span><span>0</span><span class="v-h"> items</span>)</a>
+          <a class="menu__link" href="{{ routes.cart_url }}">
+            Cart (<span class="v-h">with </span><span id="headerCartValue">{{ cart.item_count }}</span><span class="v-h"> items</span>)
+          </a>
         </li>		
       </ul>
     </nav>
