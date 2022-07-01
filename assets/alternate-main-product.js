@@ -38,27 +38,43 @@ window.addEventListener("DOMContentLoaded", () => {
     });    
   });
 
-  // CART
+  const showError = (text, $elem) => {
+    $elem.classList.add('active');
+    $elem.innerText = text;
+  }
+
+  const hideError = ($elem) => {
+    $elem.classList.remove('active');
+    $elem.innerText = '';
+  }  
+
   const $productForm = document.querySelector('.product-card__form');
   if ($productForm) {
-    //const $errorElem = $productForm.querySelector('.product-card__error');
+    const $errorElem = $productForm.querySelector('.product-card__error');
     $productForm.addEventListener('submit', (event) => {
       event.preventDefault();
       const formData = new FormData(event.target);
       formData.append('sections', 'alternate-header');
       fetch(Shopify.routes.root + 'cart/add.js', {
         method: 'POST',
+        headers: {
+          'x-requested-with': 'XMLHttpRequest'
+        },        
         body: formData
       })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
-        const event = new CustomEvent('cart:added', {
-          detail: {
-            sections: response.sections
-          }
-        });
-        document.dispatchEvent(event);
+        if (response.status === 422) {
+          showError(`${response.message}. ${response.description}`, $errorElem);
+        } else {
+          hideError($errorElem);
+          const event = new CustomEvent('cart:added', {
+            detail: {
+              sections: response.sections
+            }
+          });
+          document.dispatchEvent(event);
+        }
       })
       .catch((e) => {
         console.error(e);

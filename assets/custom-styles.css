@@ -601,6 +601,11 @@ fieldset legend {
   font-size: 14px;
   margin: 0 0 12px 0;
   text-align: center;
+  display: none;
+}
+
+.product-card__error.active {
+  display: block;
 }
 
 @media (max-width: 1200px) {
