@@ -22,11 +22,20 @@
 
     <link rel="icon" href="https://howk.github.io/spurit-exercise/icon.svg" type="image/svg+xml">
   
+    <link rel="stylesheet" href="{{ 'theme.min.css' | asset_url }}">
+    <script> 
+      {% assign amount_format = '{{amount}}' %}
+      Shopify.money_format = "€{{ amount_format }} {{ shop.currency }}";
+    </script>
+    <script src="{{ 'theme.min.js' | asset_url }}" defer></script>
+
+    {% comment %}
     <link href="{{ 'custom-styles.css' | asset_url }}" rel="stylesheet">  
 
     <script src="{{ 'theme-sections.min.js' | asset_url }}" defer></script>
     <script src="{{ 'alternate-main-product.js' | asset_url }}" defer></script>
     <script src="{{ 'alternate-header.js' | asset_url }}" defer></script>
+    {% endcomment %}
 
   </head>
   <body>

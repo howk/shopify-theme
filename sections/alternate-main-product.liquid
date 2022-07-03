@@ -49,114 +49,75 @@
   tabindex="-1">
 
   <div class="product-card__right">
+
     <h1 class="product-card__title" id="productName">
       {{ product.title }}
     </h1>
+
     <p class="product-card__price">
       <span class="v-h">Price </span>
-      {{ product.price | money_with_currency }}
+      <span id="productPrice">{{ product.price | money_with_currency }}</span>
     </p>
-    <p class="product-card__infolabel">Tax included.</p>
 
-    <form style="display: none;">
-      <fieldset class="product-card__parameter">
-        <legend class="product-card__label">Size</legend>
-        <ul class="input-group">
-          <li class="input-group__item">
-            <label class="input-radio">
-              <input class="input-radio__input" type="radio" name="product_size" value="xs" checked>
-              <span class="input-radio__visual input-radio-size">XS</span>
-            </label>
-          </li>
-          <li class="input-group__item">
-            <label class="input-radio">
-              <input class="input-radio__input" type="radio" name="product_size" value="s">
-              <span class="input-radio__visual input-radio-size">S</span>
-            </label>
-          </li>
-          <li class="input-group__item">
-            <label class="input-radio">
-              <input class="input-radio__input" type="radio" name="product_size" value="m">
-              <span class="input-radio__visual input-radio-size">M</span>
-            </label>
-          </li>
-          <li class="input-group__item">
-            <label class="input-radio">
-              <input class="input-radio__input" type="radio" name="product_size" value="l">
-              <span class="input-radio__visual input-radio-size">L</span>
-            </label>
-          </li>
-          <li class="input-group__item">
-            <label class="input-radio">
-              <input class="input-radio__input" type="radio" name="product_size" value="xl">
-              <span class="input-radio__visual input-radio-size">XL</span>
-            </label>	
-          </li>
-          <li class="input-group__item">
-            <label class="input-radio">
-              <input class="input-radio__input" type="radio" name="product_size" value="2xl" disabled>
-              <span class="input-radio__visual input-radio-size">2XL</span>
-            </label>	
-          </li>
-        </ul>					
-      </fieldset>
-      <fieldset class="product-card__parameter">
-        <legend class="product-card__label">Color<span aria-hidden="true"> - <span id="productColorValue">White</span></span></legend>
-        <ul class="input-group">
-          <li class="input-group__item">
-            <label class="input-radio">
-              <input class="input-radio__input" type="radio" name="product_color" data-name-display="White" value="white" checked>
-              <span class="input-radio__visual input-radio-color" title="White">
-                <span class="input-radio-color__sample" style="background-color: #ffffff; border: 1px #cccccc solid;"></span>
-              </span>
-            </label>											
-          </li>
-          <li class="input-group__item">
-            <label class="input-radio">
-              <input class="input-radio__input" type="radio" name="product_color" data-name-display="Black" value="black">
-              <span class="input-radio__visual input-radio-color" title="Black">
-                <span class="input-radio-color__sample" style="background-color: #1a1f29;"></span>
-              </span>
-            </label>
-          </li>
-          <li class="input-group__item">
-            <label class="input-radio">
-              <input class="input-radio__input" type="radio" name="product_color" data-name-display="Gray" value="gray">
-              <span class="input-radio__visual input-radio-color" title="Gray">
-                <span class="input-radio-color__sample" style="background-color: #aeaeb0;"></span>
-              </span>
-            </label>
-          </li>
-          <li class="input-group__item">
-            <label class="input-radio">
-              <input class="input-radio__input" type="radio" name="product_color" data-name-display="Purple latte" value="purple">
-              <span class="input-radio__visual input-radio-color" title="Purple latte">
-                <span class="input-radio-color__sample" style="background-color: #ba9be5;"></span>
-              </span>
-            </label>
-          </li>
-          <li class="input-group__item">
-            <label class="input-radio">
-              <input class="input-radio__input" type="radio" name="product_color" data-name-display="Color 1" value="color1" disabled>
-              <span class="input-radio__visual input-radio-color" title="Color 1">
-                <span class="input-radio-color__sample" style="background-color: #e9a0a7;"></span>
-              </span>
-            </label>
-          </li>
-          <li class="input-group__item">
-            <label class="input-radio">
-              <input class="input-radio__input" type="radio" name="product_color" data-name-display="Color 2" value="color2" disabled>
-              <span class="input-radio__visual input-radio-color" title="Color 2">
-                <span class="input-radio-color__sample" style="background-color: #f8cab1;"></span>
-              </span>
-            </label>												
-          </li>										
-        </ul>										
-      </fieldset>
-    </form>
+    <p class="product-card__infolabel">Tax included. 123{{ product.selected_or_first_available_variant.option1 }}</p>
 
-    {% form 'product', product, class: 'product-card__form', aria-label: 'Order' %}
-      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"> 
+    {% form 'product', product, class: 'product-card__form', data-handle: product.handle, aria-label: 'Order' %}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+      {%- for product_option in product.options_with_values -%}
+        <fieldset class="product-card__parameter">
+          <legend class="product-card__label">
+            {{ product_option.name }}
+            <span aria-hidden="true"> - 
+              <span id="option{{ product_option.position }}Value">
+                {% case product_option.position %}
+                  {% when 1 %}
+                    {{ product.selected_or_first_available_variant.option1 }}
+                  {% when 2 %}
+                    {{ product.selected_or_first_available_variant.option2 }}
+                  {% when 3 %}
+                    {{ product.selected_or_first_available_variant.option3 }}
+                {% endcase %}
+              </span>
+            </span>
+          </legend>
+          <ul class="input-group">
+            {%- for option_value in product_option.values -%}
+              <li class="input-group__item">
+                <label class="input-radio" data-test="{{ option_value }}">
+                  <input
+                    class="input-radio__input"
+                    type="radio"
+                    name="options[{{ product_option.name | escape }}]"
+                    data-name-display="{{ option_value | escape }}"
+                    value="{{ option_value | escape }}"
+                    {% if product_option.selected_value == option_value -%}checked{%- endif -%}
+                    >
+                  <span class="input-radio__visual input-radio-color" title="{{ option_value | escape }}">
+                    <span class="input-radio-color__sample" style="background-color: #f8cab1;"></span>
+                  </span>
+                </label>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </fieldset>
+      {%- endfor -%}
+
+      <noscript>
+        <select name="id">
+          {% for variant in product.variants %}
+            <option
+              {% if variant == current_variant %}selected="selected"{% endif %}
+              {% unless variant.available %}disabled="disabled"{% endunless %}
+              value="{{ variant.id }}">
+                {{ variant.title }}
+            </option>
+          {% endfor %}
+        </select>
+      </noscript>
+
+      <p class="product-card__notification"></p>
+
       <div class="product-card__parameter product-card__parameter_last">
         <label class="product-card__label" for="productQuantity">Quantity</label>
         <div class="input-quantity">
@@ -165,8 +126,11 @@
           <button type="button" class="input-quantity__btn" data-action="increase" aria-label="Increase quantity">+</button>
         </div>
       </div>
+
       <button id="btnProductAddToCart" type="submit" class="btn btn_secondary btn_hollow" aria-label="Add to cart `{{ product.title }}`">Add to cart</button>
+      
       <p class="product-card__error"></p>
+      
       <button id="btnProductBuyNow" type="submit" class="btn btn_primary" aria-label="Buy now `{{ product.title }}`">Buy it now</button>
     {% endform %}
 
