@@ -116,7 +116,7 @@
         </select>
       </noscript>
 
-      <p class="product-card__notification"></p>
+      <p role="alert" aria-live="assertive" class="product-card__notification"></p>
 
       <div class="product-card__parameter product-card__parameter_last">
         <label class="product-card__label" for="productQuantity">Quantity</label>
@@ -129,7 +129,7 @@
 
       <button id="btnProductAddToCart" type="submit" class="btn btn_secondary btn_hollow" aria-label="Add to cart `{{ product.title }}`">Add to cart</button>
       
-      <p class="product-card__error"></p>
+      <p role="alert" aria-live="assertive" class="product-card__error"></p>
       
       <button id="btnProductBuyNow" type="submit" class="btn btn_primary" aria-label="Buy now `{{ product.title }}`">Buy it now</button>
     {% endform %}

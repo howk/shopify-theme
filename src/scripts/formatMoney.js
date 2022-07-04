@@ -1,8 +1,10 @@
 Shopify.formatMoney = function(cents, format) {
-  if (typeof cents == 'string') { cents = cents.replace('.',''); }
+  if (typeof cents === 'string') {
+    cents = cents.replace('.', '');
+  }
   let value = '';
   const placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
-  const formatString = (format || this.money_format);
+  const formatString = format || this.money_format;
 
   function defaultOption(opt, def) {
     return (typeof opt == 'undefined' ? def : opt);

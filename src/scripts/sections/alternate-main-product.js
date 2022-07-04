@@ -35,7 +35,9 @@ register('alternate-main-product', {
     const $accordions = document.querySelectorAll('.accordion__item');
     if ($accordions.length) {
       $accordions.forEach((accordion) => {
-        const $accordionTitle = accordion.querySelector('.accordion__item-title');
+        const $accordionTitle = accordion.querySelector(
+          '.accordion__item-title',
+        );
         $accordionTitle.addEventListener('click', () => {
           accordion.classList.toggle('accordion__item_active');
           const $title = accordion.querySelector('.accordion__item-title');
@@ -103,14 +105,12 @@ register('alternate-main-product', {
         'Please choose another options combination',
         $notificationElem,
       );
-      return;
     } else if (variant && !variant.available) {
       showNotification(
         'Please choose another options combination',
         $notificationElem,
       );
       $btnAddToCard.disabled = true;
-      return;
     } else if (variant && variant.available) {
       hideNotification($notificationElem);
       setPrice($productPrice, event.dataset.variant.price);

@@ -1,35 +1,36 @@
 @font-face {
-  font-family: "Avenir Next Rounded Std";
-  src: url("/assets/AvenirNextRoundedStd-Reg.eot");
-  src: local("Avenir Next Rounded Std Regular"),
-    local("AvenirNextRoundedStd-Reg"),
-    url("/assets/AvenirNextRoundedStd-Reg.eot?#iefix") format("embedded-opentype"),
-    url("/assets/AvenirNextRoundedStd-Reg.woff") format("woff"),
-    url("/assets/AvenirNextRoundedStd-Reg.ttf") format("truetype");
-  font-weight: normal;
+  font-family: 'Avenir Next Rounded Std';
+  src: url('/assets/AvenirNextRoundedStd-Reg.eot');
+  src: local('Avenir Next Rounded Std Regular'),
+    local('AvenirNextRoundedStd-Reg'),
+    url('/assets/AvenirNextRoundedStd-Reg.eot?#iefix')
+      format('embedded-opentype'),
+    url('/assets/AvenirNextRoundedStd-Reg.woff') format('woff'),
+    url('/assets/AvenirNextRoundedStd-Reg.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Avenir Next Rounded Std";
-  src: url("/assets/AvenirNextRoundedStd-Demi.eot");
-  src: local("Avenir Next Rounded Std Demi"), local("AvenirNextRoundedStd-Demi"),
-    url("/assets/AvenirNextRoundedStd-Demi.eot?#iefix")
-      format("embedded-opentype"),
-    url("/assets/AvenirNextRoundedStd-Demi.woff") format("woff"),
-    url("/assets/AvenirNextRoundedStd-Demi.ttf") format("truetype");
-  font-weight: bold;
+  font-family: 'Avenir Next Rounded Std';
+  src: url('/assets/AvenirNextRoundedStd-Demi.eot');
+  src: local('Avenir Next Rounded Std Demi'), local('AvenirNextRoundedStd-Demi'),
+    url('/assets/AvenirNextRoundedStd-Demi.eot?#iefix')
+      format('embedded-opentype'),
+    url('/assets/AvenirNextRoundedStd-Demi.woff') format('woff'),
+    url('/assets/AvenirNextRoundedStd-Demi.ttf') format('truetype');
+  font-weight: 700;
   font-style: normal;
 }
 
 :root {
-  --text-color-primary: #1a1f29;
-  --text-color-light: #5e626b;
-  --link-color-primary: #1a1f29;
-  --border-color-primary: #1a1f29;
-  --border-color-light: #cccccc;
-  --brand-blue: #171c8f;
-  --focus-outline-color: #1fe3fe;
+  --text-color-primary: rgb(26, 31, 41);
+  --text-color-light: rgb(94, 98, 107);
+  --link-color-primary: rgb(26, 31, 41);
+  --border-color-primary: rgb(26, 31, 41);
+  --border-color-light: rgb(204, 204, 204);
+  --brand-blue: rgb(23, 28, 143);
+  --focus-outline-color: rgb(31, 227, 254);
   --focus-outline-width: 2px;
 }
 
@@ -41,6 +42,7 @@ a {
   text-decoration: none;
   outline: none;
 }
+
 a:focus-visible {
   outline: var(--focus-outline-width) var(--focus-outline-color) solid;
 }
@@ -65,9 +67,9 @@ body {
 body {
   padding: 0;
   margin: 0;
-  font-family: "Avenir Next Rounded Std", sans-serif;
+  font-family: 'Avenir Next Rounded Std', sans-serif;
   color: var(--text-color-primary);
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
 }
 
 h1,
@@ -76,7 +78,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: normal;
+  font-weight: 400;
   margin: 0;
   padding: 0;
 }
@@ -84,7 +86,7 @@ h6 {
 input,
 textarea,
 button {
-  font-family: "Avenir Next Rounded Std", sans-serif;
+  font-family: 'Avenir Next Rounded Std', sans-serif;
   border: none;
   background: none;
   padding: 0;
@@ -106,7 +108,7 @@ fieldset {
   padding: 0;
 }
 
-fieldset legend {
+legend {
   margin: 0;
   border: none;
   padding: 0;
@@ -156,16 +158,16 @@ fieldset legend {
 
 .btn_primary {
   background-color: var(--brand-blue);
-  color: #fff;
+  color: rgb(255, 255, 255);
 }
 
 .btn_primary:hover {
-  background-color: #292fad;
+  background-color: rgb(41, 47, 173);
 }
 
 .btn_secondary {
-  background-color: #ccc;
-  color: #fff;
+  background-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 .btn_secondary.btn_hollow {
@@ -175,6 +177,7 @@ fieldset legend {
   border-color: var(--border-color-light);
   color: var(--text-color-primary);
 }
+
 .btn_secondary.btn_hollow[disabled] {
   cursor: default;
   opacity: 0.5;
@@ -189,7 +192,7 @@ fieldset legend {
   top: 160px;
   left: -120%;
   opacity: 0;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   color: var(--text-color-light);
   padding: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
@@ -224,10 +227,8 @@ fieldset legend {
 }
 
 .header__logo:focus-visible {
-  outline-style: solid;
-  outline-width: 1px;
-  outline-color: #1ae9d7;
-  box-shadow: 0 0 4px #1ae9d7;
+  outline: 1px rgb(26, 233, 215) solid;
+  box-shadow: 0 0 4px rgb(26, 233, 215);
 }
 
 .header__logo-picture {
@@ -307,12 +308,12 @@ fieldset legend {
 }
 
 .breadcrumbs__item::after {
-  content: "";
+  content: '';
   display: inline-block;
   width: 2px;
   height: 12px;
-  border-left: 1.2px #929499 solid;
-  font-weight: bold;
+  border-left: 1.2px rgb(146, 148, 153) solid;
+  font-weight: 700;
   margin-left: 13px;
   margin-right: 8px;
   transform: rotate(22deg) translateY(2px);
@@ -336,7 +337,7 @@ fieldset legend {
 .breadcrumbs__current {
   display: inline-block;
   font-size: 12px;
-  color: #74767B;
+  color: rgb(116, 118, 123);
 }
 
 .footer {
@@ -374,10 +375,12 @@ fieldset legend {
   .footer {
     padding-top: 60px;
   }
+
   .footer__columns {
     flex-wrap: wrap;
     margin-bottom: 0;
-  }  
+  }
+
   .footer__col:nth-child(1) {
     order: 3;
     width: 100%;
@@ -385,36 +388,40 @@ fieldset legend {
     text-align: center;
     padding-right: 0;
   }
+
   .footer__col:nth-child(2) {
     order: 1;
     width: 50%;
     max-width: 50%;
     padding-right: 20px;
-  }  
+  }
+
   .footer__col:last-child {
     order: 2;
     width: 50%;
     max-width: 50%;
     padding-left: 20px;
-  }    
+  }
 }
 
 @media (max-width: 460px) {
   .footer {
     padding-top: 40px;
-  }  
+  }
+
   .footer__col:nth-child(2) {
     width: 100%;
     max-width: 100%;
     padding-right: 0;
     text-align: center;
-  }  
+  }
+
   .footer__col:last-child {
     width: 100%;
     max-width: 100%;
     padding-left: 0;
     text-align: center;
-  }    
+  }
 }
 
 .footer__copyright {
@@ -452,7 +459,7 @@ fieldset legend {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-color-primary);
-  margin: 0 0 28px 0;
+  margin: 0 0 28px;
 }
 
 .footer__address {
@@ -472,7 +479,7 @@ fieldset legend {
 @media (max-width: 768px) {
   .footer__address .social {
     justify-content: center;
-  }  
+  }
 }
 
 .social {
@@ -517,6 +524,7 @@ fieldset legend {
 }
 
 .accordion__item-title {
+  position: relative;
   display: block;
   width: 100%;
   text-align: left;
@@ -524,7 +532,6 @@ fieldset legend {
   line-height: 1.4;
   letter-spacing: 0.0125em;
   color: var(--text-color-primary);
-  position: relative;
   padding-top: 31px;
   padding-bottom: 30px;
   padding-right: 30px;
@@ -535,23 +542,23 @@ fieldset legend {
 }
 
 .accordion__item-title::after {
-  content: "";
+  content: '';
+  position: absolute;
   width: 13px;
   height: 1;
-  border-top: 1px var(--border-color-primary) solid;
-  position: absolute;
   right: 0;
   top: 50%;
+  border-top: 1px var(--border-color-primary) solid;
 }
 
 .accordion__item-title::before {
-  content: "";
-  width: 1px;
-  height: 13px;
-  border-left: 1px var(--border-color-primary) solid;
+  content: '';
   position: absolute;
   right: 5px;
   top: 50%;
+  width: 1px;
+  height: 13px;
+  border-left: 1px var(--border-color-primary) solid;
   margin-top: -6px;
 }
 
@@ -601,9 +608,9 @@ fieldset legend {
 }
 
 .product-card__error {
-  color: #8f1717;
+  color: rgb(143, 23, 23);
   font-size: 14px;
-  margin: 0 0 12px 0;
+  margin: 0 0 12px;
   text-align: center;
   display: none;
 }
@@ -615,7 +622,7 @@ fieldset legend {
 .product-card__notification {
   color: var(--text-color-primary);
   font-size: 14px;
-  margin: 0 0 12px 0;
+  margin: 0 0 12px;
   text-align: left;
   display: none;
 }
@@ -690,17 +697,17 @@ fieldset legend {
 .product-card__title {
   font-size: 22px;
   line-height: 1.4;
-  font-weight: normal;
+  font-weight: 400;
   letter-spacing: 0.0125em;
-  margin: 0 0 21px 0;
+  margin: 0 0 21px;
   color: var(--text-color-primary);
 }
 
 .product-card__price {
   font-size: 20px;
-  font-weight: normal;
+  font-weight: 400;
   letter-spacing: 0.0125em;
-  margin: 0 0 24px 0;
+  margin: 0 0 24px;
   color: var(--text-color-primary);
 }
 
@@ -746,7 +753,7 @@ fieldset legend {
   line-height: 1.4;
   letter-spacing: 0.0125em;
   color: var(--text-color-light);
-  margin: 0 0 47px 0;
+  margin: 0 0 47px;
 }
 
 .input-group {
@@ -798,6 +805,7 @@ fieldset legend {
   width: 40px;
   text-align: center;
   color: var(--text-color-primary);
+  -moz-appearance: textfield;
 }
 
 .input-quantity__field:focus-visible {
@@ -811,14 +819,9 @@ fieldset legend {
   margin: 0;
 }
 
-.input-quantity__field {
-  -moz-appearance: textfield;
-}
-
 .input-radio {
   position: relative;
   display: block;
-  position: relative;
 }
 
 .input-radio__input {
@@ -831,9 +834,9 @@ fieldset legend {
 
 .input-radio__visual {
   position: relative;
+  z-index: 5;
   width: 40px;
   height: 40px;
-  z-index: 5;
   display: inline-flex;
   cursor: pointer;
   overflow: hidden;
@@ -863,13 +866,13 @@ fieldset legend {
 
 .input-radio__input:disabled + .input-radio-size {
   border: none;
-  background-color: #f2f2f2;
-  color: #bdbdbd;
+  background-color: rgb(242, 242, 242);
+  color: rgb(189, 189, 189);
   cursor: default;
 }
 
 .input-radio__input:disabled + .input-radio-size::after {
-  content: "";
+  content: '';
   position: absolute;
   left: -1px;
   top: -1px;
@@ -905,7 +908,7 @@ fieldset legend {
 }
 
 .input-radio__input:disabled + .input-radio-color::after {
-  content: "";
+  content: '';
   position: absolute;
   left: -1px;
   top: -1px;
@@ -924,7 +927,7 @@ fieldset legend {
 .heading-2 {
   font-size: 22px;
   line-height: 1.3;
-  font-weight: normal;
+  font-weight: 400;
   color: var(--brand-blue);
   margin: 0;
   letter-spacing: 0.01em;
@@ -977,9 +980,9 @@ fieldset legend {
 }
 
 .products-grid__item-photo {
+  position: relative;  
   display: block;
   width: 100%;
-  position: relative;
   padding-bottom: 148%;
   margin-bottom: 20px;
   overflow: hidden;
@@ -1031,7 +1034,7 @@ fieldset legend {
   left: 0;
   top: 0;
   z-index: 1;
-  padding: 8px 12px 0 12px;
+  padding: 8px 12px 0;
 }
 
 .colors-palette {
@@ -1070,7 +1073,7 @@ fieldset legend {
   font-size: 13px;
   line-height: 1.2;
   color: var(--text-color-light);
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   padding: 4px 5px;
   margin-left: 4px;
   margin-right: 4px;
